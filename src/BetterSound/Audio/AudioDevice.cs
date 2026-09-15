@@ -58,9 +58,14 @@ public sealed class AudioDevice
         EndpointFormFactor formFactor = EndpointFormFactor.UnknownFormFactor;
         try
         {
-            formFactor = device.Properties[PropertyKeys.PKEY_AudioEndpoint_FormFactor].Value is int raw
-                ? (EndpointFormFactor)raw
-                : EndpointFormFactor.UnknownFormFactor;
+            // The native PROPVARIANT for this key is VT_UI4; boxed that
+            // can come back as uint rather than int, so convert rather
+            // than pattern-match on a specific numeric type.
+            var raw = device.Properties[PropertyKeys.PKEY_AudioEndpoint_FormFactor].Value;
+            if (raw is not null)
+            {
+                formFactor = (EndpointFormFactor)Convert.ToInt32(raw);
+            }
         }
         catch
         {

@@ -224,7 +224,7 @@ public sealed class AudioEngine : INotifyPropertyChanged, IDisposable, IMMNotifi
 
     private static void RunOnUi(Action action)
     {
-        var dispatcher = Application.Current?.Dispatcher;
+        var dispatcher = System.Windows.Application.Current?.Dispatcher;
         if (dispatcher is null || dispatcher.CheckAccess())
         {
             action();
