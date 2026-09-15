@@ -14,6 +14,18 @@
             <controls:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
             <controls:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <controls:MuteGlyphConverter x:Key="MuteGlyphConverter" />
+
+            <!--
+                Kills WPF's default keyboard-focus rectangle app-wide. It
+                renders in the user's Windows accent color (gold/amber for
+                some, blue for others) via SystemParameters, which is why
+                the flyout showed stray colored lines under every slider and
+                row — a real Quick Settings-style flyout shouldn't show
+                focus rings at all.
+            -->
+            <Style TargetType="Control">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
