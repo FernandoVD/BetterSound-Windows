@@ -2,19 +2,36 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="About BetterSound"
-        Width="320" Height="260"
+        Width="300" SizeToContent="Height"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="{DynamicResource FlyoutBackgroundBrush}">
-    <StackPanel Margin="24" VerticalAlignment="Center">
-        <TextBlock Text="BetterSound" Style="{StaticResource SectionTitleStyle}" HorizontalAlignment="Center" FontSize="20" />
-        <TextBlock x:Name="VersionText" Style="{StaticResource CaptionTextStyle}" HorizontalAlignment="Center" Margin="0,4,0,16" />
-        <TextBlock Style="{StaticResource BodyTextStyle}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,16">
-            A tiny, open-source Windows equivalent of a Control Center–style sound mixer: master volume, device switching, and per-app volume — right from the tray.
+    <StackPanel Margin="28">
+        <TextBlock Text="&#xE995;" FontFamily="{StaticResource IconFont}" FontSize="52"
+                   Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center" Margin="0,0,0,4" />
+
+        <TextBlock Text="BetterSound" FontSize="20" FontWeight="SemiBold"
+                   Foreground="{DynamicResource PrimaryTextBrush}" HorizontalAlignment="Center" />
+
+        <TextBlock x:Name="VersionText" Style="{StaticResource CaptionTextStyle}" HorizontalAlignment="Center" />
+
+        <TextBlock Text="A lightweight, open-source volume mixer for the tray." Style="{StaticResource CaptionTextStyle}"
+                   TextAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,14" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Created by " Style="{StaticResource CaptionTextStyle}" />
+            <TextBlock Style="{StaticResource CaptionTextStyle}">
+                <Hyperlink NavigateUri="https://github.com/FernandoVD" RequestNavigate="Hyperlink_RequestNavigate">
+                    <Run Text="FernandoVD" />
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock Text=" · 2026" Style="{StaticResource CaptionTextStyle}" />
+        </StackPanel>
+
+        <TextBlock HorizontalAlignment="Center" Margin="0,2,0,0">
+            <Hyperlink NavigateUri="https://github.com/FernandoVD/BetterSound-Windows" RequestNavigate="Hyperlink_RequestNavigate">
+                <Run Text="View source on GitHub" Foreground="{DynamicResource SecondaryTextBrush}" FontSize="11" />
+            </Hyperlink>
         </TextBlock>
-        <TextBlock Style="{StaticResource CaptionTextStyle}" HorizontalAlignment="Center">
-            <Run Text="Windows port of " /><Hyperlink NavigateUri="https://github.com/FernandoVD/BetterSound" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="BetterSound for macOS" /></Hyperlink>
-        </TextBlock>
-        <TextBlock Text="MIT License · © 2026 FernandoVD" Style="{StaticResource CaptionTextStyle}" HorizontalAlignment="Center" Margin="0,8,0,0" />
     </StackPanel>
 </Window>

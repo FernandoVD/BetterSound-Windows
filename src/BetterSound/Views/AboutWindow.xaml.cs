@@ -10,8 +10,11 @@ public partial class AboutWindow : Window
     public AboutWindow()
     {
         InitializeComponent();
-        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.0.0";
-        VersionText.Text = $"Version {version}";
+
+        var version = Assembly.GetExecutingAssembly().GetName().Version;
+        var shortVersion = version?.ToString(3) ?? "0.1.0";
+        var buildNumber = version?.Revision.ToString() ?? "1";
+        VersionText.Text = $"Version {shortVersion} ({buildNumber})";
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
