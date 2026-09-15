@@ -54,7 +54,7 @@ public partial class MainFlyout : Window
 
     private void InputMuteButton_Click(object sender, RoutedEventArgs e) => Audio.ToggleInputMute();
 
-    private void AppMuteButton_Click(object sender, RoutedEventArgs e)
+    private void AppIcon_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
         if (((FrameworkElement)sender).DataContext is AppAudioItem item)
         {

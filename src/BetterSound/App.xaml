@@ -13,7 +13,7 @@
             <controls:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
             <controls:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
             <controls:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
-            <controls:MuteGlyphConverter x:Key="MuteGlyphConverter" />
+            <controls:MutedOpacityConverter x:Key="MutedOpacityConverter" />
 
             <!--
                 Kills WPF's default keyboard-focus rectangle app-wide. It

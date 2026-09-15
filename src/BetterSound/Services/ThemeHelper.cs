@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using System.Windows.Media;
 using Microsoft.Win32;
 
 namespace BetterSound.Services;
@@ -28,6 +29,55 @@ public static class ThemeHelper
         }
 
         merged.Insert(0, dark);
+    }
+
+    /// <summary>
+    /// Replaces the app's own hardcoded blue AccentBrush with the user's
+    /// actual Windows accent color, read from the same registry value
+    /// Settings > Personalization > Colors writes to. Falls back to
+    /// whatever Colors.xaml/DarkColors.xaml already defines if the key is
+    /// missing or malformed — this is a well-known but undocumented value,
+    /// so treat a failure here as "stays the hardcoded color," not a crash.
+    /// </summary>
+    public static void ApplySystemAccentColor()
+    {
+        if (TryGetAccentColor(out var color))
+        {
+            System.Windows.Application.Current.Resources["AccentBrush"] = new SolidColorBrush(color);
+        }
+    }
+
+    private static bool TryGetAccentColor(out Color color)
+    {
+        color = default;
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM");
+            if (key?.GetValue("AccentColor") is not int raw)
+            {
+                return false;
+            }
+
+            // Stored as 0xAABBGGRR rather than the usual 0xAARRGGBB — a
+            // long-documented quirk of this specific value, not a typo.
+            var value = unchecked((uint)raw);
+            var a = (byte)((value >> 24) & 0xFF);
+            var b = (byte)((value >> 16) & 0xFF);
+            var g = (byte)((value >> 8) & 0xFF);
+            var r = (byte)(value & 0xFF);
+
+            if (a == 0)
+            {
+                return false;
+            }
+
+            color = Color.FromArgb(a, r, g, b);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static bool IsDarkModeEnabled()

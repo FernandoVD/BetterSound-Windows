@@ -16,116 +16,101 @@
     <Border Background="{DynamicResource FlyoutBackgroundBrush}"
             BorderBrush="{DynamicResource FlyoutBorderBrush}"
             BorderThickness="1"
-            CornerRadius="8"
-            Padding="14">
+            CornerRadius="16"
+            Padding="18">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="24" ShadowDepth="4" Opacity="0.25" Color="Black" />
+            <DropShadowEffect BlurRadius="28" ShadowDepth="6" Opacity="0.3" Color="Black" />
         </Border.Effect>
 
         <StackPanel>
 
             <!-- Sound -->
-            <TextBlock Text="Sound" Style="{StaticResource SectionTitleStyle}" Margin="0,0,0,8" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Style="{StaticResource IconGlyphButtonStyle}"
-                        Content="{Binding Audio.MuteGlyph}"
-                        IsEnabled="{Binding Audio.SupportsMasterVolume}"
-                        Click="MasterMuteButton_Click" />
-                <Slider Grid.Column="1" Margin="6,0" Style="{StaticResource PillSliderStyle}"
-                        Value="{Binding Audio.EffectiveMasterVolume, Mode=TwoWay}"
-                        IsEnabled="{Binding Audio.SupportsMasterVolume}" />
-                <TextBlock Grid.Column="2" FontFamily="{StaticResource IconFont}" FontSize="12"
-                           Foreground="{DynamicResource IconBrush}" Text="&#xE995;" VerticalAlignment="Center" Width="16" />
-            </Grid>
-            <TextBlock Text="No single volume control for this output" Style="{StaticResource CaptionTextStyle}" Margin="0,4,0,0"
-                       Visibility="{Binding Audio.SupportsMasterVolume, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
-
-            <Border Style="{StaticResource DividerStyle}" />
+            <StackPanel Margin="0,0,0,18">
+                <TextBlock Text="Sound" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,8" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Style="{StaticResource IconGlyphButtonStyle}"
+                            Content="{Binding Audio.MuteGlyph}"
+                            IsEnabled="{Binding Audio.SupportsMasterVolume}"
+                            Click="MasterMuteButton_Click" />
+                    <Slider Grid.Column="1" Margin="8,0,0,0" Style="{StaticResource PillSliderStyle}"
+                            Value="{Binding Audio.EffectiveMasterVolume, Mode=TwoWay}"
+                            IsEnabled="{Binding Audio.SupportsMasterVolume}" />
+                </Grid>
+                <TextBlock Text="No single volume control for this output" Style="{StaticResource CaptionTextStyle}" Margin="0,6,0,0"
+                           Visibility="{Binding Audio.SupportsMasterVolume, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+            </StackPanel>
 
             <!-- Output -->
-            <TextBlock Text="Output" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,8" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" FontFamily="{StaticResource IconFont}" FontSize="12"
-                           Foreground="{DynamicResource IconBrush}" Text="{Binding Audio.CurrentOutputGlyph}"
-                           VerticalAlignment="Center" Width="16" />
-                <TextBlock Grid.Column="1" Text="{Binding Audio.CurrentOutputName}" Style="{StaticResource BodyTextStyle}"
-                           Margin="8,0" VerticalAlignment="Center" />
-                <Button Grid.Column="2" Style="{StaticResource IconGlyphButtonStyle}" Content="&#xE70D;"
-                        FontSize="10" Click="OutputDeviceButton_Click" />
-            </Grid>
-
-            <Border Style="{StaticResource DividerStyle}" />
+            <StackPanel Margin="0,0,0,18">
+                <TextBlock Text="Output" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,8" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" FontFamily="{StaticResource IconFont}" FontSize="14"
+                               Foreground="{DynamicResource IconBrush}" Text="{Binding Audio.CurrentOutputGlyph}"
+                               VerticalAlignment="Center" Width="18" />
+                    <TextBlock Grid.Column="1" Text="{Binding Audio.CurrentOutputName}" Style="{StaticResource BodyTextStyle}"
+                               Margin="8,0" VerticalAlignment="Center" />
+                    <Button Grid.Column="2" Style="{StaticResource IconGlyphButtonStyle}" Content="&#xE70D;"
+                            FontSize="10" Click="OutputDeviceButton_Click" />
+                </Grid>
+            </StackPanel>
 
             <!-- Input -->
-            <TextBlock Text="Input" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,8" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Style="{StaticResource IconGlyphButtonStyle}"
-                        Content="{Binding Audio.InputMuteGlyph}"
-                        IsEnabled="{Binding Audio.SupportsInputVolume}"
-                        Click="InputMuteButton_Click" />
-                <Slider Grid.Column="1" Margin="6,0" Style="{StaticResource PillSliderStyle}"
-                        Value="{Binding Audio.EffectiveInputVolume, Mode=TwoWay}"
-                        IsEnabled="{Binding Audio.SupportsInputVolume}" />
-                <Button Grid.Column="2" Style="{StaticResource IconGlyphButtonStyle}" Content="&#xE70D;"
-                        FontSize="10" Click="InputDeviceButton_Click" />
-            </Grid>
+            <StackPanel Margin="0,0,0,18">
+                <TextBlock Text="Input" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,8" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Style="{StaticResource IconGlyphButtonStyle}"
+                            Content="{Binding Audio.InputMuteGlyph}"
+                            IsEnabled="{Binding Audio.SupportsInputVolume}"
+                            Click="InputMuteButton_Click" />
+                    <Slider Grid.Column="1" Margin="8,0" Style="{StaticResource PillSliderStyle}"
+                            Value="{Binding Audio.EffectiveInputVolume, Mode=TwoWay}"
+                            IsEnabled="{Binding Audio.SupportsInputVolume}" />
+                    <Button Grid.Column="2" Style="{StaticResource IconGlyphButtonStyle}" Content="&#xE70D;"
+                            FontSize="10" Click="InputDeviceButton_Click" />
+                </Grid>
+            </StackPanel>
 
-            <!-- Applications -->
-            <Border Style="{StaticResource DividerStyle}"
-                    Visibility="{Binding Apps.Items.Count, Converter={StaticResource CountToVisibilityConverter}}" />
-            <StackPanel Visibility="{Binding Apps.Items.Count, Converter={StaticResource CountToVisibilityConverter}}">
-                <TextBlock Text="Applications" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,8" />
+            <!-- Applications: icon + slider only, matching the native Volume
+                 mixer's own minimal per-app rows (no name label, no separate
+                 mute button — the app name is a tooltip instead). -->
+            <StackPanel Margin="0,0,0,18" Visibility="{Binding Apps.Items.Count, Converter={StaticResource CountToVisibilityConverter}}">
+                <TextBlock Text="Applications" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,10" />
                 <ItemsControl ItemsSource="{Binding Apps.Items}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type audio:AppAudioItem}">
-                            <StackPanel Margin="0,0,0,10">
-                                <Grid Margin="0,0,0,4">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0" Width="16" Height="16" CornerRadius="4" Margin="0,0,8,0">
-                                        <Image Source="{Binding Icon}" Width="16" Height="16" />
-                                    </Border>
-                                    <TextBlock Grid.Column="1" Text="{Binding Name}" Style="{StaticResource BodyTextStyle}"
-                                               VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Style="{StaticResource IconGlyphButtonStyle}" FontSize="9"
-                                            Content="{Binding IsMuted, Converter={StaticResource MuteGlyphConverter}}"
-                                            Click="AppMuteButton_Click" />
-                                    <Slider Grid.Column="1" Margin="6,0,0,0" Style="{StaticResource PillSliderSmallStyle}"
-                                            Value="{Binding EffectiveVolume, Mode=TwoWay}" />
-                                </Grid>
-                            </StackPanel>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding Icon}" Width="20" Height="20" Cursor="Hand"
+                                       Opacity="{Binding IsMuted, Converter={StaticResource MutedOpacityConverter}}"
+                                       MouseLeftButtonDown="AppIcon_MouseLeftButtonDown"
+                                       ToolTip="{Binding Name}" />
+                                <Slider Grid.Column="1" Margin="10,0,0,0" Style="{StaticResource PillSliderSmallStyle}"
+                                        Value="{Binding EffectiveVolume, Mode=TwoWay}" />
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
 
-            <Border Style="{StaticResource DividerStyle}" />
-
             <!-- Update available -->
-            <StackPanel Margin="0,0,0,6" Visibility="{Binding Updates.AvailableUpdate, Converter={StaticResource NullToVisibilityConverter}}">
+            <StackPanel Margin="0,0,0,10" Visibility="{Binding Updates.AvailableUpdate, Converter={StaticResource NullToVisibilityConverter}}">
                 <TextBlock Style="{StaticResource BodyTextStyle}" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}">
                     <Hyperlink NavigateUri="{Binding Updates.AvailableUpdate.HtmlUrl}" RequestNavigate="Hyperlink_RequestNavigate">
                         <Run Text="Update available: v" /><Run Text="{Binding Updates.AvailableUpdate.Version, Mode=OneWay}" />

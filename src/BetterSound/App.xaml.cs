@@ -43,6 +43,7 @@ public partial class App : Application
         }
 
         Services.ThemeHelper.ApplySystemTheme();
+        Services.ThemeHelper.ApplySystemAccentColor();
 
         Audio.Start();
         Apps.Start(Audio);

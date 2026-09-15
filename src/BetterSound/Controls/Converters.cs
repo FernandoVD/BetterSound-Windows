@@ -32,11 +32,11 @@ public sealed class NullToVisibilityConverter : IValueConverter
         throw new NotSupportedException();
 }
 
-/// <summary>Mute glyph for the per-app rows — same two Segoe Fluent Icons codepoints as AudioEngine.MuteGlyph, just driven by a plain bool instead of living on the engine.</summary>
-public sealed class MuteGlyphConverter : IValueConverter
+/// <summary>Dims an app row's icon while muted — the per-app rows have no separate mute button (matching the native Volume mixer's minimal look), so the icon itself doubles as the mute toggle and needs to show its own state.</summary>
+public sealed class MutedOpacityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
-        value is bool muted && muted ? "" : "";
+        value is bool muted && muted ? 0.35 : 1.0;
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
         throw new NotSupportedException();
