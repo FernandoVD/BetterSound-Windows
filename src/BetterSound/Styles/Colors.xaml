@@ -1,0 +1,26 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        Windows 11 Quick Settings light palette. BetterSound.Services.ThemeHelper
+        swaps these brush values for the dark set at startup based on the
+        HKCU Personalize\AppsUseLightTheme registry value (Windows 8+); it
+        doesn't hot-swap on theme change mid-session, which is a reasonable
+        v1 corner to cut given there's no way to visually check either state
+        without a Windows box.
+    -->
+
+    <SolidColorBrush x:Key="FlyoutBackgroundBrush" Color="#F3F3F3" Opacity="0.92" />
+    <SolidColorBrush x:Key="FlyoutBorderBrush" Color="#00000014" />
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#1A1A1A" />
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#5F5F5F" />
+    <SolidColorBrush x:Key="DividerBrush" Color="#00000014" />
+    <SolidColorBrush x:Key="AccentBrush" Color="#0067C0" />
+    <SolidColorBrush x:Key="TrackBackgroundBrush" Color="#00000012" />
+    <SolidColorBrush x:Key="ControlHoverBrush" Color="#00000009" />
+    <SolidColorBrush x:Key="IconBrush" Color="#1A1A1A" />
+
+    <FontFamily x:Key="UIFont">Segoe UI Variable Text, Segoe UI</FontFamily>
+    <FontFamily x:Key="IconFont">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+</ResourceDictionary>

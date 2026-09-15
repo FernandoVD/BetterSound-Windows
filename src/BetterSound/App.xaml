@@ -1,0 +1,19 @@
+<Application x:Class="BetterSound.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:BetterSound.Controls"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Colors.xaml" />
+                <ResourceDictionary Source="Styles/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <controls:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+            <controls:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
+            <controls:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <controls:MuteGlyphConverter x:Key="MuteGlyphConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

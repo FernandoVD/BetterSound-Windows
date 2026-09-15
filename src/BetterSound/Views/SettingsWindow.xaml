@@ -1,0 +1,47 @@
+<Window x:Class="BetterSound.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BetterSound Settings"
+        Width="360" Height="360"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{DynamicResource FlyoutBackgroundBrush}">
+    <DockPanel Margin="20">
+        <Border DockPanel.Dock="Bottom" Style="{StaticResource DividerStyle}" Margin="0,10,0,10" />
+        <Button DockPanel.Dock="Bottom" Content="About BetterSound" Style="{StaticResource LinkButtonStyle}"
+                HorizontalAlignment="Center" Click="AboutButton_Click" Margin="0,0,0,4" />
+
+        <StackPanel>
+            <TextBlock Text="General" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,10" />
+
+            <Grid Margin="0,0,0,14">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Launch at login" Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" />
+                <CheckBox Grid.Column="1" x:Name="LaunchAtLoginToggle" Style="{StaticResource ToggleSwitchStyle}"
+                          Click="LaunchAtLoginToggle_Click" />
+            </Grid>
+
+            <Border Style="{StaticResource DividerStyle}" />
+
+            <TextBlock Text="Updates" Style="{StaticResource SectionHeaderStyle}" Margin="0,0,0,10" />
+
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Automatically check for updates" Style="{StaticResource BodyTextStyle}" VerticalAlignment="Center" />
+                <CheckBox Grid.Column="1" x:Name="AutoCheckToggle" Style="{StaticResource ToggleSwitchStyle}"
+                          Click="AutoCheckToggle_Click" />
+            </Grid>
+
+            <Button Content="Check for Updates…" Style="{StaticResource LinkButtonStyle}" HorizontalAlignment="Left"
+                    Click="CheckForUpdatesButton_Click" Margin="0,0,0,6" />
+
+            <TextBlock x:Name="UpdateStatusText" Style="{StaticResource CaptionTextStyle}" />
+        </StackPanel>
+    </DockPanel>
+</Window>

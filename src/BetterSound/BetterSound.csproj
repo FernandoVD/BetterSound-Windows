@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>BetterSound</AssemblyName>
+    <RootNamespace>BetterSound</RootNamespace>
+    <Version>0.1.0</Version>
+    <!--
+      .NET 8 desktop apps run on Windows 7 SP1 and later, which is the point:
+      no WinUI 3 / MSIX runtime requirement, so this runs on the widest set
+      of Windows versions rather than just Windows 11.
+    -->
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <StartupObject>BetterSound.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+  </ItemGroup>
+
+</Project>
